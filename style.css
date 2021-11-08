@@ -3,7 +3,7 @@ html, body {
   padding: 0;
 }
 
-.main_box{
+#main_box{
   background-color: black;
   color: white;
   height: 600px;
@@ -12,7 +12,7 @@ html, body {
   justify-content: center;
   align-items: center;
 }
-.start_button {
+#start_button {
   height: 500px;
   width: 700px;
   font-size: 35px;
@@ -22,9 +22,10 @@ html, body {
   border: none;
 
 }
-.square {
+#square {
   background-color: white;
   width: 40px;
   height: 40px;
   position: absolute;
+  display: none;
 }

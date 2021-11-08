@@ -1,57 +1,45 @@
-
 let oldtime = 0;
-let time = 0;
-let pos_x = 100;
-let pos_y = 100;
-let count = 0;
-const WIDTH = 800;
-const HEIGHT = 600;
-document.getElementById('square').style.opacity = 0;
+const mainBox = document.getElementById('main_box')
+const startButton = document.getElementById('start_button');
+const square = document.getElementById('square');
+const WIDTH = mainBox.offsetWidth;
+const HEIGHT = mainBox.offsetHeight;
 
-function startButton() {
-    document.getElementById('start_button').textContent = '';
-    document.getElementById('start_button').style.background = 'black'
-    document.getElementById('square').style.opacity = 1;
+
+function onClickStartButton() {
+    square.style.display = 'block';
+    startButton.style.display = 'none';
     oldtime = (new Date()).getTime() / 1000;
-}
-
-function start_game() {
-    document.getElementById('start_button').addEventListener('click', startButton);
 }
 
 function moveSquare() {
     let x = Math.floor(Math.random() * (WIDTH - 50));
     let y = Math.floor(Math.random() * (HEIGHT - 50));
-    document.getElementById('square').style.left = x.toString() + "px";
-    document.getElementById('square').style.top = y.toString() + "px";
+    square.style.left = x + "px";
+    square.style.top = y + "px";
 }
 
 function stopGame() {
-    document.getElementById('start_button').removeAttribute
-    document.getElementById('square').style.opacity = 0;
-    document.getElementById('square').removeEventListener('click', function () { });
-    document.getElementById('start_button').style.background = '#070707'
-    document.getElementById('start_button').textContent = 'Game over. Your time was: ' + (time - oldtime).toFixed(2).toString() + " seconds. " + "Click to play again";
+    const time = (new Date()).getTime() / 1000;
+    square.style.display = 'none';
+    startButton.textContent = 'Game over. Your time was: ' + (time - oldtime).toFixed(2).toString() + " seconds. " + "Click to play again";
+    startButton.style.display = 'block';
 }
 
-function play_game() {
-    start_game();
+function setupGame() {
+    let count = 0;
+    startButton.addEventListener('click', onClickStartButton);
 
-    document.getElementById('square').addEventListener('click', function () {
-
+    square.addEventListener('click', function () {
         moveSquare();
 
         count++;
-        if (count == 5) {
-
-            time = (new Date()).getTime() / 1000;
-            console.log((time - oldtime).toFixed(2).toString() + " seconds. " + "Click to play again")
-
+        if (count === 5) {
+            
             stopGame();
             count = 0;
-
         }
     })
 }
 
-play_game();
+setupGame();
