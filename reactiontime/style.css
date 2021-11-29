@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  background: black;
 }
 
 #main_box{
@@ -11,6 +12,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: block;
+  margin: auto;
 }
 #start_button {
   height: 500px;
