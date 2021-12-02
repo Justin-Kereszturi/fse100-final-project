@@ -1,2 +1,2 @@
-# fse100-p5
-Our p5.js project
+# fse100 final project
+We built 4 games for a class called intro to engineering as ASU. 
